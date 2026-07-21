@@ -1,0 +1,61 @@
+---
+const experiences = [
+  {
+    period: "AGO 2025 — ACTUALIDAD",
+    role: "Desarrollador Web Freelance",
+    company: "Sandoval S.A. – Servicio de mantenimiento de Automóviles",
+    details: [
+      "Desarrollo de sitio web y sistema de gestión de tickets.",
+      "Implementación de Back-End y base de datos para registro de clientes, equipos y seguimiento de las boletas.",
+      "Despliegue de la aplicación en entorno Cloud y optimización básica de rendimiento.",
+      "Actualización continua según las peticiones del cliente."
+    ]
+  },
+  {
+    period: "JUN 2025 — DIC 2025",
+    role: "Administrador de Pañol TI",
+    company: "INACAP SEDE CHILLÁN",
+    description: "Soporte técnico especializado para docentes y alumnos. Gestión de inventario,infraestructura de laboratorios, mantenimiento de equipos y soporte de conectividad."
+  },
+  {
+    period: "NOV 2024 — JUN 2025",
+    role: "Reemplazo Profesor de Informática",
+    company: "INSUCO CHILLÁN",
+    description: "Docencia y liderazgo de talleres en programación y redes. Ejecución de la reestructuración integral de la red, instalando cableado estructurado y equipos Ubiquiti."
+  }
+];
+---
+
+<section class="mb-section-gap" id="experience">
+  <div class="hairline mb-12"></div>
+  <h2 class="font-headline-sm text-headline-sm mb-16 italic">Trayectoria Profesional</h2>
+  <div class="space-y-24">
+    {experiences.map((exp, index) => (
+      <div>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter group">
+          <div class="md:col-span-3">
+            <span class="font-label-caps text-label-caps text-secondary block mb-2">{exp.period}</span>
+            <h3 class="font-headline-sm text-headline-sm">{exp.role}</h3>
+            {exp.company && (
+              <p class="font-label-caps text-label-caps text-on-primary-container mt-1">
+                {exp.company}
+              </p>
+            )}
+          </div>
+          <div class="md:col-span-9">
+            {exp.details ? (
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {exp.details.map(detail => (
+                  <p class="font-body-md text-body-md text-secondary">{detail}</p>
+                ))}
+              </div>
+            ) : (
+              <p class="font-body-md text-body-md text-secondary">{exp.description}</p>
+            )}
+          </div>
+        </div>
+        {index < experiences.length - 1 && <div class="hairline opacity-30 mt-24"></div>}
+      </div>
+    ))}
+  </div>
+</section>

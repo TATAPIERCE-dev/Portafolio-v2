@@ -1,0 +1,77 @@
+---
+import img1 from '../images/proyecto 1.png';
+import img2 from '../images/proyecto 2.png';
+
+const projects = [
+  {
+    category: "Gestión / Automotriz",
+    title: "Sistema de Gestión - Sandoval S.A.",
+    description: "Plataforma interna para la gestión y seguimiento de tickets, control de clientes y reportes de la serviteca automotriz.",
+    tags: ["ADONISJS", "REACT", "INERTIA", "TYPESCRIPT", "TAILWINDCSS", "SHADCN UI", "POSTGRESQL", "DOCKER"],
+    linkText: "Repositorio Privado",
+    linkUrl: "#",
+    images: [img1.src, img2.src]
+  }
+];
+---
+
+<section class="mb-section-gap" id="projects">
+  <div class="hairline mb-12"></div>
+  <h2 class="font-headline-sm text-headline-sm mb-16 italic">Proyectos Destacados</h2>
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+    {projects.map(project => (
+      <div class="md:col-span-12 group relative overflow-hidden bg-surface-container/60 backdrop-blur-[2px] border border-outline-variant p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 hover:border-primary transition-all duration-300">
+        <div class="flex-1">
+          <span class="font-label-caps text-label-caps text-on-primary-container">{project.category}</span>
+          <h3 class="font-headline-md text-headline-md mt-4">{project.title}</h3>
+          <p class="font-body-lg text-body-lg text-secondary mt-6 mb-8 max-w-xl">{project.description}</p>
+          <div class="flex flex-wrap gap-2 mb-8">
+            {project.tags.map(tag => (
+              <span class="px-3 py-1 bg-on-background/10 text-label-caps text-[10px] rounded-sm hover:bg-primary hover:text-background transition-colors duration-200">
+                {tag}
+              </span>
+            ))}
+          </div>
+          <a class="font-label-caps text-label-caps text-primary border-b border-primary hover:pb-1 transition-all" href={project.linkUrl}>
+            {project.linkText}
+          </a>
+        </div>
+        
+        <!-- Rotating Image Container (Same Square/Aspect Ratio) -->
+        <div class="w-full md:w-1/2 aspect-video bg-on-background/10 rounded-none overflow-hidden border border-outline-variant relative project-image-container">
+          <img 
+            alt={`${project.title} Interface 1`} 
+            class="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 absolute inset-0 project-img opacity-100" 
+            src={project.images[0]} 
+          />
+          <img 
+            alt={`${project.title} Interface 2`} 
+            class="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 absolute inset-0 project-img opacity-0" 
+            src={project.images[1]} 
+          />
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  // Image cycler for project showcases
+  const containers = document.querySelectorAll('.project-image-container');
+  containers.forEach(container => {
+    const images = container.querySelectorAll('.project-img');
+    if (images.length > 1) {
+      let currentIndex = 0;
+      setInterval(() => {
+        // Fade out current
+        images[currentIndex].classList.remove('opacity-100');
+        images[currentIndex].classList.add('opacity-0');
+        
+        // Fade in next
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.remove('opacity-0');
+        images[currentIndex].classList.add('opacity-100');
+      }, 3000);
+    }
+  });
+</script>

@@ -1,0 +1,101 @@
+<canvas id="bg-canvas"></canvas>
+
+<script>
+  // Particle Animation: Sophisticated 'Paper & Ink' Version
+  const canvas = document.getElementById('bg-canvas') as HTMLCanvasElement | null;
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    if (ctx) {
+      let particles: Particle[] = [];
+
+      const initCanvas = () => {
+        if (canvas) {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+      };
+
+      class Particle {
+        x: number = 0;
+        y: number = 0;
+        size: number = 0;
+        speedX: number = 0;
+        speedY: number = 0;
+        color: string = '';
+        opacity: number = 0;
+
+        constructor() {
+          this.reset();
+        }
+
+        reset() {
+          if (canvas) {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+          }
+          // Very small subtle particles (grain-like)
+          this.size = Math.random() * 1.5 + 0.2;
+          // Slow, drifting speed
+          this.speedX = (Math.random() * 0.3 - 0.15);
+          this.speedY = (Math.random() * 0.3 - 0.15);
+          // Soft grey/beige tones (Ink/Paper palette)
+          const tones = ['#c4c7c7', '#747878', '#ebe7e6'];
+          this.color = tones[Math.floor(Math.random() * tones.length)];
+          this.opacity = Math.random() * 0.5 + 0.1;
+        }
+
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          if (canvas) {
+            if (this.x < 0) this.x = canvas.width;
+            if (this.x > canvas.width) this.x = 0;
+            if (this.y < 0) this.y = canvas.height;
+            if (this.y > canvas.height) this.y = 0;
+          }
+        }
+
+        draw() {
+          if (ctx) {
+            ctx.globalAlpha = this.opacity;
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      }
+
+      const createParticles = () => {
+        if (canvas) {
+          // Subtle density
+          const count = Math.floor((canvas.width * canvas.height) / 10000);
+          particles = [];
+          for (let i = 0; i < count; i++) {
+            particles.push(new Particle());
+          }
+        }
+      };
+
+      const animate = () => {
+        if (canvas && ctx) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          particles.forEach(p => {
+            p.update();
+            p.draw();
+          });
+        }
+        requestAnimationFrame(animate);
+      };
+
+      window.addEventListener('resize', () => {
+        initCanvas();
+        createParticles();
+      });
+
+      initCanvas();
+      createParticles();
+      animate();
+    }
+  }
+</script>

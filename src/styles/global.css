@@ -1,0 +1,229 @@
+@import "tailwindcss";
+
+@theme {
+  --color-on-primary-container: #858383;
+  --color-secondary-fixed: #e3e2e2;
+  --color-on-tertiary-fixed-variant: #484645;
+  --color-on-background: #1c1b1b;
+  --color-on-primary-fixed-variant: #474746;
+  --color-primary-fixed: #e5e2e1;
+  --color-primary-container: #1c1b1b;
+  --color-on-tertiary-container: #868382;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-error-container: #93000a;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-fixed: #1b1c1c;
+  --color-outline-variant: #c4c7c7;
+  --color-on-secondary-fixed-variant: #464747;
+  --color-primary-fixed-dim: #c8c6c5;
+  --color-secondary-container: #e3e2e2;
+  --color-on-error: #ffffff;
+  --color-surface-dim: #ddd9d8;
+  --color-surface-bright: #fdf8f8;
+  --color-secondary-fixed-dim: #c7c6c6;
+  --color-inverse-on-surface: #f4f0ef;
+  --color-surface-container-low: #f7f3f2;
+  --color-inverse-primary: #c8c6c5;
+  --color-inverse-surface: #313030;
+  --color-outline: #747878;
+  --color-tertiary-fixed: #e6e2df;
+  --color-surface-container-highest: #e5e2e1;
+  --color-surface-container: #f1edec;
+  --color-on-secondary-container: #646464;
+  --color-on-surface-variant: #444748;
+  --color-surface-variant: #e5e2e1;
+  --color-on-surface: #1c1b1b;
+  --color-primary: #000000;
+  --color-on-primary: #ffffff;
+  --color-tertiary-fixed-dim: #cac6c4;
+  --color-on-tertiary: #ffffff;
+  --color-surface-container-high: #ebe7e6;
+  --color-surface: #fdf8f8;
+  --color-background: #fdf8f8;
+  --color-on-primary-fixed: #1c1b1b;
+  --color-secondary: #5e5e5e;
+  --color-tertiary-container: #1c1b1a;
+  --color-tertiary: #000000;
+  --color-on-tertiary-fixed: #1c1b1a;
+  --color-error-container: #ffdad6;
+  --color-surface-tint: #5f5e5e;
+  --color-error: #ba1a1a;
+
+  --radius-DEFAULT: 1rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+  --radius-full: 9999px;
+
+  --spacing-container-max: 1120px;
+  --spacing-section-gap: 128px;
+  --spacing-unit: 8px;
+  --spacing-gutter: 32px;
+  --spacing-margin-mobile: 20px;
+  --spacing-margin-desktop: 64px;
+}
+
+/* Class-based Dark Mode configuration for Tailwind CSS v4 */
+@variant dark (&:where(.dark, .dark *));
+
+/* Theme override for dark mode */
+.dark {
+  --color-background: #121212;
+  --color-on-background: #fdf8f8;
+  --color-primary: #fdf8f8;
+  --color-on-primary: #121212;
+  --color-secondary: #a3a3a3;
+  --color-on-surface: #fdf8f8;
+  --color-on-surface-variant: #c4c7c7;
+  --color-outline-variant: #333333;
+  --color-surface-container: #1a1a1a;
+  --color-surface-container-lowest: #0c0c0c;
+  --color-on-primary-container: #c8c6c5;
+}
+
+@utility text-headline-sm {
+  font-family: "EB Garamond", serif;
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 400;
+}
+@utility text-display-lg-mobile {
+  font-family: "EB Garamond", serif;
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+@utility text-headline-md {
+  font-family: "EB Garamond", serif;
+  font-size: 32px;
+  line-height: 1.3;
+  font-weight: 400;
+}
+@utility text-label-caps {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+@utility text-body-lg {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+@utility text-body-md {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+@utility text-display-lg {
+  font-family: "EB Garamond", serif;
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+@utility text-body-sm {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+}
+.hairline {
+  height: 1px;
+  background-color: #c4c7c7;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+.dark .hairline {
+  background-color: #333333;
+}
+.nav-link-active {
+  border-bottom: 1px solid var(--color-primary);
+  padding-bottom: 4px;
+}
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  scroll-behavior: smooth;
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.btn-pill {
+  border: 1px solid var(--color-primary);
+  border-radius: 9999px;
+  padding: 12px 32px;
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
+  text-decoration: none;
+  display: inline-block;
+  color: var(--color-primary);
+  background-color: transparent;
+}
+.btn-pill:hover {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.15;
+}
+main, nav, footer {
+  position: relative;
+  z-index: 10;
+}
+
+/* Custom Scrollbar (Pill-shaped, Dark Blue) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0f2d59; /* Elegant Dark Blue */
+  border-radius: 9999px;
+  border: 2px solid var(--color-background);
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1d4ed8;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #1d4ed8; /* Electric Blue for dark mode contrast */
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* Firefox support */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #0f2d59 var(--color-background);
+}
+
+html.dark {
+  scrollbar-color: #1d4ed8 var(--color-background);
+}

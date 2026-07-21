@@ -1,0 +1,33 @@
+---
+const certifications = [
+  {
+    title: "Desarrollo Web Completo con HTML5, CSS3, AJAX, PHP y MySQL",
+    issuer: "Udemy",
+    year: "2026"
+  },
+  {
+    title: "AWS Academy Graduate - AWS Academy Cloud Foundations",
+    issuer: "Amazon Web Services",
+    year: "2023"
+  }
+];
+---
+
+<section class="mb-section-gap" id="certifications">
+  <div class="hairline mb-12"></div>
+  <h2 class="font-headline-sm text-headline-sm mb-12 italic">Certificaciones y Licencias</h2>
+  <div class="space-y-6">
+    {certifications.map(cert => (
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center py-6 border-b border-outline-variant hover:px-4 transition-all duration-300 hover:bg-surface-container/30">
+        <div>
+          <h4 class="font-body-lg text-body-lg">{cert.title}</h4>
+          <p class="font-body-sm text-body-sm text-secondary">{cert.issuer} • {cert.year}</p>
+        </div>
+        <span class="material-symbols-outlined text-secondary mt-4 md:mt-0">verified</span>
+      </div>
+    ))}
+  </div>
+  <div class="mt-12">
+    <button class="btn-pill">Ver más certificados</button>
+  </div>
+</section>

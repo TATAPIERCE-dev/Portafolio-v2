@@ -1,0 +1,133 @@
+---
+import myImage from '../images/IMG_20251211_105923.jpg';
+---
+
+<section class="mb-section-gap" id="hero">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+    <div class="md:col-span-7 flex flex-col justify-center">
+      <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 italic">
+        Hola, soy Rodrigo Sandoval
+      </h1>
+      
+      <!-- Animated / Scrambled Subheading -->
+      <div class="font-headline-md text-headline-md text-primary mb-4 flex items-center min-h-[1.5em]">
+        <span id="scramble-text" class="italic font-semibold"></span><span class="animate-pulse ml-1 text-primary font-bold">_</span>
+      </div>
+
+      <!-- Descriptive details -->
+      <p class="font-body-lg text-body-lg text-secondary mb-12 max-w-2xl">
+        Cuento con experiencia en soporte TI, infraestructura y desarrollo web. Me enfoco en crear soluciones digitales eficientes, optimizando procesos y aportando valor mediante tecnologías modernas y un aprendizaje continuo.
+      </p>
+    </div>
+    <div class="md:col-span-5 flex justify-end">
+      <div class="relative w-full aspect-square md:aspect-auto md:h-[450px] overflow-hidden rounded-none border border-outline-variant">
+        <img 
+          class="w-full h-full object-cover object-center grayscale contrast-110" 
+          alt="Rodrigo Sandoval - Retrato profesional"
+          src={myImage.src}
+        />
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mt-16">
+    <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+      A lo largo de mi trayectoria he participado en proyectos de soporte técnico, administración de infraestructura y desarrollo de aplicaciones web, siempre priorizando la continuidad operativa y la mejora de procesos. Disfruto enfrentar nuevos desafíos, aprender constantemente y aplicar soluciones que simplifiquen el trabajo de las personas.
+    </p>
+    <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+     Actualmente continúo fortaleciendo mis conocimientos en desarrollo Full Stack con tecnologías como React, Next.js, TypeScript y Node.js, complementando mi experiencia en soporte e infraestructura. Mi objetivo es aportar a equipos donde pueda combinar responsabilidad, capacidad técnica y una mentalidad orientada a la mejora continua.
+    </p>
+  </div>
+  <div class="flex flex-wrap gap-6 mt-16">
+    <a class="btn-pill" href="#">Acceder a CV </a>
+  </div>
+</section>
+
+<script>
+  class TextScramble {
+    el: HTMLElement;
+    chars: string;
+    queue: Array<{ from: string; to: string; start: number; end: number; char?: string }>;
+    frame: number = 0;
+    resolve: (value?: any) => void = () => {};
+    currentFrame: number = 0;
+
+    constructor(el: HTMLElement) {
+      this.el = el;
+      this.chars = '!<>-_\\/[]{}—=+*^?#________';
+      this.update = this.update.bind(this);
+      this.queue = [];
+    }
+
+    setText(newText: string) {
+      const oldText = this.el.innerText;
+      const length = Math.max(oldText.length, newText.length);
+      const promise = new Promise((resolve) => this.resolve = resolve);
+      this.queue = [];
+      for (let i = 0; i < length; i++) {
+        const from = oldText[i] || '';
+        const to = newText[i] || '';
+        const start = Math.random() * 30;
+        const end = start + Math.random() * 30;
+        this.queue.push({ from, to, start, end });
+      }
+      cancelAnimationFrame(this.frame);
+      this.currentFrame = 0;
+      this.frame = requestAnimationFrame(this.update);
+      return promise;
+    }
+
+    update() {
+      let output = '';
+      let complete = 0;
+      for (let i = 0, n = this.queue.length; i < n; i++) {
+        let { from, to, start, end, char } = this.queue[i];
+        if (this.currentFrame >= end) {
+          complete++;
+          output += to;
+        } else if (this.currentFrame >= start) {
+          if (!char || Math.random() < 0.28) {
+            char = this.randomChar();
+            this.queue[i].char = char;
+          }
+          output += `<span class="opacity-40 font-mono text-secondary">${char}</span>`;
+        } else {
+          output += from;
+        }
+      }
+      this.el.innerHTML = output;
+      if (complete === this.queue.length) {
+        this.resolve();
+      } else {
+        this.currentFrame++;
+        this.frame = requestAnimationFrame(this.update);
+      }
+    }
+
+    randomChar() {
+      return this.chars[Math.floor(Math.random() * this.chars.length)];
+    }
+  }
+
+  // Animation cycle definitions
+  const phrases = [
+    'Ingeniero en Informática',
+    'Desarrollador Web',
+    'Soluciones Digitales Escalables'
+  ];
+
+  const el = document.getElementById('scramble-text');
+  if (el) {
+    const fx = new TextScramble(el);
+    let counter = 0;
+    
+    const next = () => {
+      fx.setText(phrases[counter]).then(() => {
+        setTimeout(next, 3000);
+      });
+      counter = (counter + 1) % phrases.length;
+    };
+    
+    // Initial start
+    next();
+  }
+</script>

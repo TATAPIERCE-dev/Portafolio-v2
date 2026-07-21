@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BackgroundCanvas from "../components/BackgroundCanvas.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import Experience from "../components/Experience.astro";
+import Skills from "../components/Skills.astro";
+import Projects from "../components/Projects.astro";
+import Certifications from "../components/Certifications.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout>
+  <!-- Background animation -->
+  <BackgroundCanvas />
+
+  <!-- Navigation bar -->
+  <Navbar />
+
+  <!-- Main content wrapper -->
+  <main
+    class="pt-24 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop"
+  >
+    <!-- Hero section -->
+    <Hero />
+
+    <!-- Professional journey -->
+    <Experience />
+
+    <!-- Technology stack -->
+    <Skills />
+
+    <!-- Featured projects -->
+    <Projects />
+
+    <!-- Certifications -->
+    <Certifications />
+
+    <!-- Contact section -->
+    <Contact />
+  </main>
+
+  <!-- Footer -->
+  <Footer />
+</Layout>

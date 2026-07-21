@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rodrigo Sandoval | Portfolio</title>
+<!-- Google Fonts: EB Garamond for Serif, Inter for Sans -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#858383",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-tertiary-fixed-variant": "#484645",
+                        "on-background": "#1c1b1b",
+                        "on-primary-fixed-variant": "#474746",
+                        "primary-fixed": "#e5e2e1",
+                        "primary-container": "#1c1b1b",
+                        "on-tertiary-container": "#868382",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "outline-variant": "#c4c7c7",
+                        "on-secondary-fixed-variant": "#464747",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "secondary-container": "#e3e2e2",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#ddd9d8",
+                        "surface-bright": "#fdf8f8",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-container-low": "#f7f3f2",
+                        "inverse-primary": "#c8c6c5",
+                        "inverse-surface": "#313030",
+                        "outline": "#747878",
+                        "tertiary-fixed": "#e6e2df",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-container": "#f1edec",
+                        "on-secondary-container": "#646464",
+                        "on-surface-variant": "#444748",
+                        "surface-variant": "#e5e2e1",
+                        "on-surface": "#1c1b1b",
+                        "primary": "#000000",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#cac6c4",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#ebe7e6",
+                        "surface": "#fdf8f8",
+                        "background": "#fdf8f8",
+                        "on-primary-fixed": "#1c1b1b",
+                        "secondary": "#5e5e5e",
+                        "tertiary-container": "#1c1b1a",
+                        "tertiary": "#000000",
+                        "on-tertiary-fixed": "#1c1b1a",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#5f5e5e",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1120px",
+                        "section-gap": "128px",
+                        "unit": "8px",
+                        "gutter": "32px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["EB Garamond"],
+                        "display-lg-mobile": ["EB Garamond"],
+                        "headline-md": ["EB Garamond"],
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["EB Garamond"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .hairline {
+            height: 1px;
+            background-color: #c4c7c7;
+            width: 100%;
+        }
+        .nav-link-active {
+            border-bottom: 1px solid #000;
+            padding-bottom: 4px;
+        }
+        body {
+            background-color: #fdf8f8; /* Warm off-white/cream */
+            color: #1c1b1b;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+        .btn-pill {
+            border: 1px solid #1a1a1a;
+            border-radius: 9999px;
+            padding: 12px 32px;
+            font-family: 'EB Garamond', serif;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 10;
+        }
+        .btn-pill:hover {
+            background-color: #1a1a1a;
+            color: #fdf8f8;
+        }
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.15;
+        }
+        main, nav, footer {
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+<!-- Background Animation -->
+<canvas id="bg-canvas"></canvas>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-gutter bg-background/80 backdrop-blur-sm border-b border-outline-variant">
+<div class="font-headline-sm text-headline-sm text-primary uppercase tracking-tighter">
+            Rodrigo Sandoval
+        </div>
+<div class="hidden md:flex gap-8 items-center"><a class="font-label-caps text-label-caps text-primary border-b border-primary pb-1 hover:text-primary transition-colors duration-300" href="#hero">INICIO</a><a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-colors duration-300" href="#stack">SKILLS</a><a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-colors duration-300" href="#experience">TRAYECTORIA</a><a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-colors duration-300" href="#projects">PROYECTOS</a><a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-colors duration-300" href="#contact">CONTACTO</a></div>
+<button class="md:hidden">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+<main class="pt-32 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Section -->
+<section class="mb-section-gap" id="hero">
+<div class="hairline mb-8"></div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-7 flex flex-col justify-center">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-8 italic">
+                        Hola, soy Rodrigo Sandoval
+                    </h1>
+<p class="font-headline-sm text-headline-sm text-secondary mb-12 max-w-2xl">
+                        Ingeniero en Informática con experiencia en desarrollo de soluciones digitales escalables. Especializado en transformar requerimientos complejos en arquitecturas robustas y eficientes.
+                    </p>
+</div>
+<div class="md:col-span-5 flex justify-end">
+<div class="relative w-full aspect-square md:aspect-auto md:h-[500px] overflow-hidden rounded-none border border-outline-variant">
+<img class="w-full h-full object-cover grayscale contrast-110" data-alt="A professional studio portrait of a male software engineer with a modern, minimalist aesthetic. He is dressed in a smart casual dark blazer over a simple white t-shirt. The lighting is soft and directional, casting subtle shadows that emphasize depth. The background is a clean, warm off-white, matching the editorial design system's monochromatic and sophisticated palette. The mood is confident, intellectual, and serene." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrkPLSjqkm3hsn1ojiczbPe0F0LfsDbceksqBlivxC1uEtJEoK9OdVJTrxEY7eXegL_JE9Fm5WQOrnSw0UwCopWPLfr1Rqs2daZd5Rn-VDzmd_UQMhd4fKRTUxdSoGEJJrtCNZO9h1srlOEONEt8I52O1RCeKLgZQu_1mylxj4uH4McbXuZr3zipRvR9anvnNwElnTq-4ENOqYh9hagKVuVi1dCyKDeTluQPOkVmnk_uUfJMuoagPZkxVGlOOBrMWSPzL8HKM_AvI"/>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mt-16">
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    Me especializo en el desarrollo de software centrado en la eficiencia y la escalabilidad, abarcando desde la concepción de arquitecturas cloud hasta la optimización de sistemas críticos. Mi enfoque combina la precisión técnica con una visión estratégica del producto, colaborando estrechamente con equipos multidisciplinarios para entregar valor real al negocio.
+                </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    Actualmente, mi foco está en el diseño de microservicios y sistemas distribuidos de alto impacto, donde la resiliencia y el performance son fundamentales. Disfruto enfrentando desafíos técnicos que requieren soluciones creativas y metodologías ágiles, manteniendo siempre un estándar de excelencia en el código y la documentación.
+                </p>
+</div>
+<div class="flex flex-wrap gap-6 mt-16">
+<a class="btn-pill" href="#">Descargar CV .PDF</a>
+<a class="btn-pill" href="#">Descargar CV .DOC</a>
+</div>
+</section>
+<!-- Trayectoria Profesional -->
+<section class="mb-section-gap" id="experience">
+<div class="hairline mb-12"></div>
+<h2 class="font-headline-sm text-headline-sm mb-16 italic">Trayectoria Profesional</h2>
+<div class="space-y-24"><!-- Role 1 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter group">
+<div class="md:col-span-3">
+<span class="font-label-caps text-label-caps text-secondary block mb-2">AGO 2025 — ACTUALIDAD</span>
+<h3 class="font-headline-sm text-headline-sm">Desarrollador Web Freelance</h3>
+<p class="font-label-caps text-label-caps text-on-primary-container mt-1">Sandoval S.A. – Servicio de mantenimiento de Automóviles</p>
+</div>
+<div class="md:col-span-9">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<p class="font-body-md text-body-md text-secondary">Desarrollo de sitio web y sistema de gestión de tickets.</p>
+<p class="font-body-md text-body-md text-secondary">Implementación de Back-End y base de datos para registro de clientes, equipos y seguimiento de las boletas.</p>
+<p class="font-body-md text-body-md text-secondary">Despliegue de la aplicación en entorno Cloud y optimización básica de rendimiento.</p>
+<p class="font-body-md text-body-md text-secondary">Actualización continua según las peticiones del cliente.</p>
+</div>
+</div>
+</div>
+<div class="hairline opacity-30"></div>
+<!-- Role 2 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-3">
+<span class="font-label-caps text-label-caps text-secondary block mb-2">JUN 2025 — DIC 2025</span>
+<h3 class="font-headline-sm text-headline-sm">Administrador de Pañol TI</h3>
+</div>
+<div class="md:col-span-9">
+<p class="font-body-md text-body-md text-secondary">Gestión de inventario tecnológico, mantenimiento básico de hardware y soporte operativo a docentes y estudiantes en laboratorios e infraestructura escolar.</p>
+</div>
+</div>
+<div class="hairline opacity-30"></div>
+<!-- Role 3 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-3">
+<span class="font-label-caps text-label-caps text-secondary block mb-2">NOV 2024 — JUN 2025</span>
+<h3 class="font-headline-sm text-headline-sm">Profesor de Informática</h3>
+</div>
+<div class="md:col-span-9">
+<p class="font-body-md text-body-md text-secondary">Docencia y liderazgo de talleres en programación y redes (INSUCO Chillán). Ejecución de la reestructuración integral de la red, instalando cableado estructurado y equipos Ubiquiti.</p>
+</div>
+</div></div>
+</section>
+<!-- Stack Principal -->
+<section class="mb-section-gap" id="stack">
+<div class="hairline mb-12"></div>
+<h2 class="font-headline-sm text-headline-sm mb-16 italic">Stack Principal</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter"><!-- Category 1 -->
+<div class="p-8 border border-outline-variant bg-background/40 backdrop-blur-[2px] hover:bg-surface-container transition-colors duration-300">
+<h4 class="font-label-caps text-label-caps text-primary mb-6">Frontend</h4>
+<ul class="space-y-3 font-body-sm text-body-sm text-secondary">
+<li>React, Next.js, Tailwind</li>
+</ul>
+</div>
+<!-- Category 2 -->
+<div class="p-8 border border-outline-variant bg-background/40 backdrop-blur-[2px] hover:bg-surface-container transition-colors duration-300">
+<h4 class="font-label-caps text-label-caps text-primary mb-6">Backend</h4>
+<ul class="space-y-3 font-body-sm text-body-sm text-secondary">
+<li>Node, Go, Python</li>
+</ul>
+</div>
+<!-- Category 3 -->
+<div class="p-8 border border-outline-variant bg-background/40 backdrop-blur-[2px] hover:bg-surface-container transition-colors duration-300">
+<h4 class="font-label-caps text-label-caps text-primary mb-6">Host</h4>
+<ul class="space-y-3 font-body-sm text-body-sm text-secondary">
+<li>AWS, Vercel, Netlify</li>
+</ul>
+</div>
+<!-- Category 4 -->
+<div class="p-8 border border-outline-variant bg-background/40 backdrop-blur-[2px] hover:bg-surface-container transition-colors duration-300">
+<h4 class="font-label-caps text-label-caps text-primary mb-6">Database</h4>
+<ul class="space-y-3 font-body-sm text-body-sm text-secondary">
+<li>PostgreSQL, MongoDB</li>
+</ul>
+</div></div>
+</section>
+<!-- Proyectos Destacados (Bento Grid Style) -->
+<section class="mb-section-gap" id="projects">
+<div class="hairline mb-12"></div>
+<h2 class="font-headline-sm text-headline-sm mb-16 italic">Proyectos Destacados</h2>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6"><!-- Project 1: Sandoval S.A. -->
+<div class="md:col-span-12 group relative overflow-hidden bg-surface-container/60 backdrop-blur-[2px] border border-outline-variant p-8 md:p-16 flex flex-col md:flex-row items-center gap-12">
+<div class="flex-1">
+<span class="font-label-caps text-label-caps text-on-primary-container">Gestión / Automotriz</span>
+<h3 class="font-headline-md text-headline-md mt-4">Sistema de Gestión - Sandoval S.A.</h3>
+<p class="font-body-lg text-body-lg text-secondary mt-6 mb-8 max-w-xl">Plataforma interna para la gestión y seguimiento de tickets, control de clientes y reportes de la serviteca automotriz.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1 bg-on-background/10 text-label-caps text-[10px] rounded-sm">ADONISJS</span>
+<span class="px-3 py-1 bg-on-background/10 text-label-caps text-[10px] rounded-sm">REACT</span>
+<span class="px-3 py-1 bg-on-background/10 text-label-caps text-[10px] rounded-sm">INERTIA</span>
+<span class="px-3 py-1 bg-on-background/10 text-label-caps text-[10px] rounded-sm">TYPESCRIPT</span>
+<span class="px-3 py-1 bg-on-background/10 text-label-caps text-[10px] rounded-sm">TAILWINDCSS</span>
+<span class="px-3 py-1 bg-on-background/10 text-label-caps text-[10px] rounded-sm">SHADCN UI</span>
+<span class="px-3 py-1 bg-on-background/10 text-label-caps text-[10px] rounded-sm">POSTGRESQL</span>
+<span class="px-3 py-1 bg-on-background/10 text-label-caps text-[10px] rounded-sm">DOCKER</span>
+</div>
+<a class="font-label-caps text-label-caps text-primary border-b border-primary hover:pb-1 transition-all" href="#">Repositorio Privado</a>
+</div>
+<div class="w-full md:w-1/2 aspect-video bg-on-background/10 rounded-none overflow-hidden border border-outline-variant">
+<img alt="Sistema de Gestión Sandoval S.A. Interface" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLc36gZ1prd5nngxjFL9yu23p4NZS6dwJRBxmpKT12SMRdF5-noAj_eerrGPvCjw7rZYXkMjyiWgoCCWt47zER5-lb5vYvFh4fU-vl3hq5Codq5i4y93bAhNVMCb8oYLfLUmkcpX2nTfZtvcGGwawoTgE2ZDBLOryiRRV-B0xv9oQYabGMhTpUZfLX4UjdPatXBOpQkkQazF4dKUwh9lCpzg_JQTgVpA3sA17SDHQLpBwegYA1Q3UTfQmO5EjAzsQOk2WgtGQc9FQ"/>
+</div>
+</div></div>
+</section>
+<!-- Certificaciones -->
+<section class="mb-section-gap" id="certifications">
+<div class="hairline mb-12"></div>
+<h2 class="font-headline-sm text-headline-sm mb-12 italic">Certificaciones y Licencias</h2>
+<div class="space-y-6">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center py-6 border-b border-outline-variant hover:px-4 transition-all duration-300">
+<div>
+<h4 class="font-body-lg text-body-lg">Full Stack Web Development</h4>
+<p class="font-body-sm text-body-sm text-secondary">Global Tech Academy • 2022</p>
+</div>
+<span class="material-symbols-outlined text-secondary mt-4 md:mt-0">verified</span>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center py-6 border-b border-outline-variant hover:px-4 transition-all duration-300">
+<div>
+<h4 class="font-body-lg text-body-lg">Cloud Computing Architecture</h4>
+<p class="font-body-sm text-body-sm text-secondary">AWS Certified Solutions Architect • 2023</p>
+</div>
+<span class="material-symbols-outlined text-secondary mt-4 md:mt-0">verified</span>
+</div>
+</div>
+<div class="mt-12">
+<button class="btn-pill">Ver más certificados</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-section-gap px-margin-mobile md:px-margin-desktop py-gutter flex flex-col md:flex-row justify-between items-center gap-4 border-t border-outline-variant bg-background/80 backdrop-blur-sm" id="contact">
+<div class="font-label-caps text-label-caps text-primary">Rodrigo Sandoval</div>
+<p class="font-body-sm text-body-sm text-secondary text-center md:text-left max-w-md">
+            © 2024 Rodrigo Sandoval. Built with HTML5, CSS3, JS, Tailwind, Framer Motion, Lucide.
+        </p>
+<div class="flex gap-6">
+<a class="font-label-caps text-label-caps text-secondary hover:text-primary underline transition-all duration-300" href="#">LinkedIn</a>
+<a class="font-label-caps text-label-caps text-secondary hover:text-primary underline transition-all duration-300" href="#">GitHub</a>
+<a class="font-label-caps text-label-caps text-secondary hover:text-primary underline transition-all duration-300" href="#">Email</a>
+</div>
+</footer>
+<script>
+    // Particle Animation: Sophisticated 'Paper & Ink' Version
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function initCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    class Particle {
+        constructor() {
+            this.reset();
+        }
+        reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            // Very small subtle particles (grain-like)
+            this.size = Math.random() * 1.5 + 0.2;
+            // Slow, drifting speed
+            this.speedX = (Math.random() * 0.3 - 0.15);
+            this.speedY = (Math.random() * 0.3 - 0.15);
+            // Soft grey/beige tones (Ink/Paper palette)
+            const tones = ['#c4c7c7', '#747878', '#ebe7e6'];
+            this.color = tones[Math.floor(Math.random() * tones.length)];
+            this.opacity = Math.random() * 0.5 + 0.1;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x < 0) this.x = canvas.width;
+            if (this.x > canvas.width) this.x = 0;
+            if (this.y < 0) this.y = canvas.height;
+            if (this.y > canvas.height) this.y = 0;
+        }
+        draw() {
+            ctx.globalAlpha = this.opacity;
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    function createParticles() {
+        // Subtle density
+        const count = Math.floor((canvas.width * canvas.height) / 10000);
+        particles = [];
+        for (let i = 0; i < count; i++) {
+            particles.push(new Particle());
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+        requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+        initCanvas();
+        createParticles();
+    });
+
+    initCanvas();
+    createParticles();
+    animate();
+
+    // Scroll and Menu Interaction
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('shadow-sm');
+        } else {
+            nav.classList.remove('shadow-sm');
+        }
+    });
+
+    const menuBtn = document.querySelector('button .material-symbols-outlined');
+    menuBtn.addEventListener('click', () => {
+        alert('Menu mobile interface coming soon in this editorial design.');
+    });
+</script>
+</body></html>
