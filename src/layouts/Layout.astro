@@ -34,5 +34,43 @@ import '../styles/global.css';
 	</head>
 	<body class="font-body-md text-body-md">
 		<slot />
+		
+		<!-- Flashbang Container -->
+		<div id="flashbang-overlay" class="fixed inset-0 z-[9999] pointer-events-none bg-transparent flex items-center justify-center">
+			<img id="flashbang-grenade" src="/flashbang.png" alt="Flashbang" class="hidden w-28 h-28 object-contain select-none pointer-events-none" />
+		</div>
+
+		<style is:global>
+			@keyframes flashbang-bounce {
+				0% {
+					transform: translate(50vw, -100vh) rotate(0deg) scale(0.5);
+					animation-timing-function: ease-in;
+				}
+				40% {
+					transform: translate(10vw, 15vh) rotate(180deg) scale(1);
+					animation-timing-function: ease-out;
+				}
+				55% {
+					transform: translate(-5vw, -10vh) rotate(270deg) scale(1);
+					animation-timing-function: ease-in;
+				}
+				70% {
+					transform: translate(-10vw, 8vh) rotate(360deg) scale(1);
+					animation-timing-function: ease-out;
+				}
+				85% {
+					transform: translate(-12vw, -2vh) rotate(400deg) scale(1);
+					animation-timing-function: ease-in;
+				}
+				100% {
+					transform: translate(-13vw, 4vh) rotate(420deg) scale(1);
+				}
+			}
+
+			.animate-grenade-bounce {
+				display: block !important;
+				animation: flashbang-bounce 2s forwards;
+			}
+		</style>
 	</body>
 </html>
