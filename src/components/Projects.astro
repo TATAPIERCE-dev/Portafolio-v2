@@ -1,6 +1,7 @@
 ---
 import img1 from '../images/proyecto 1.png';
 import img2 from '../images/proyecto 2.png';
+import tupcLab from '../images/tupc-lab.png';
 
 const projects = [
   {
@@ -11,6 +12,15 @@ const projects = [
     linkText: "Repositorio Privado",
     linkUrl: "#",
     images: [img1.src, img2.src]
+  },
+  {
+    category: "Web Scraping / Hardware",
+    title: "TuPC.LAB — Explorador de componentes PC",
+    description: "Aplicación web para comparar componentes de tiendas chilenas, consultar su historial de precios y armar un PC según tu presupuesto. Incluye filtros de stock, favoritos y exportación de cotizaciones a Excel o TXT.",
+    tags: ["PYTHON", "BEAUTIFULSOUP", "SQLITE", "JAVASCRIPT", "HTML5", "CSS3"],
+    linkText: "Ver repositorio en GitHub ↗",
+    linkUrl: "https://github.com/TATAPIERCE-dev/tupc-lab",
+    images: [tupcLab.src]
   }
 ];
 ---
@@ -32,23 +42,21 @@ const projects = [
               </span>
             ))}
           </div>
-          <a class="font-label-caps text-label-caps text-primary border-b border-primary hover:pb-1 transition-all" href={project.linkUrl}>
+          <a class="font-label-caps text-label-caps text-primary border-b border-primary hover:pb-1 transition-all" href={project.linkUrl} target={project.linkUrl.startsWith('https://') ? '_blank' : undefined} rel={project.linkUrl.startsWith('https://') ? 'noopener noreferrer' : undefined}>
             {project.linkText}
           </a>
         </div>
         
         <!-- Rotating Image Container (Same Square/Aspect Ratio) -->
         <div class="w-full md:w-1/2 aspect-video bg-on-background/10 rounded-none overflow-hidden border border-outline-variant relative project-image-container">
-          <img 
-            alt={`${project.title} Interface 1`} 
-            class="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 absolute inset-0 project-img opacity-100" 
-            src={project.images[0]} 
-          />
-          <img 
-            alt={`${project.title} Interface 2`} 
-            class="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 absolute inset-0 project-img opacity-0" 
-            src={project.images[1]} 
-          />
+          {project.images.map((src, index) => (
+            <img
+              alt={`${project.title} — captura ${index + 1}`}
+              class={`w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 absolute inset-0 project-img ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
+              src={src}
+              loading="lazy"
+            />
+          ))}
         </div>
       </div>
     ))}
