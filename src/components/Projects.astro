@@ -2,6 +2,9 @@
 import img1 from '../images/proyecto 1.png';
 import img2 from '../images/proyecto 2.png';
 import tupcLab from '../images/tupc-lab.png';
+import busesInicio from '../images/sistema-buses-inicio.png';
+import busesDestinos from '../images/sistema-buses-destinos.png';
+import busesBusqueda from '../images/sistema-buses-busqueda.png';
 
 const projects = [
   {
@@ -21,6 +24,16 @@ const projects = [
     linkText: "Ver repositorio en GitHub ↗",
     linkUrl: "https://github.com/TATAPIERCE-dev/tupc-lab",
     images: [tupcLab.src]
+  },
+  {
+    category: "Transporte / Reservas",
+    title: "TravelEase — Sistema de reserva de buses",
+    description: "Aplicación web para buscar viajes por Chile, filtrar rutas y horarios, seleccionar asientos y gestionar reservas. Incluye pagos simulados y generación de comprobantes de compra.",
+    tags: ["ADONISJS", "REACT", "INERTIA", "TYPESCRIPT", "TAILWINDCSS", "POSTGRESQL"],
+    linkText: "Ver repositorio en GitHub ↗",
+    linkUrl: "https://github.com/TATAPIERCE-dev/SISTEMA-BUSES",
+    images: [busesInicio.src, busesDestinos.src, busesBusqueda.src],
+    containImages: true
   }
 ];
 ---
@@ -52,7 +65,7 @@ const projects = [
           {project.images.map((src, index) => (
             <img
               alt={`${project.title} — captura ${index + 1}`}
-              class={`w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 absolute inset-0 project-img ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
+              class={`w-full h-full ${project.containImages ? 'object-contain' : 'object-cover group-hover:scale-105'} grayscale contrast-110 group-hover:grayscale-0 transition-all duration-1000 absolute inset-0 project-img ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
               src={src}
               loading="lazy"
             />
